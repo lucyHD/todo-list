@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const Todo = new mongoose.Schema({
 
     item:{type:'String', required:'true'},
-    dueby:{type: Date, default: Date.now, required: 'true'},
+    dueBy:{type: Date, default: Date.now, required: 'true'},
     category: {type:'String', required: 'true'},
-    completed:{type:Boolean, default: false},
-    del:{type:'String'}, 
-    
+    col: {type: 'String', required: true},
+    pinned:{type: Boolean, default: false},
+//   pinned to the top! 
 }, {
     toObject: {virtuals: true},
 

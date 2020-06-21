@@ -1,24 +1,36 @@
-<h1> You currently have no to do items!</h1>
-<p> Why not do something?!</p>
+<div class="outer">
+<h1> ToDo List!</h1>
 
 <form action="/" method="post">
+ 
   <input type="text" name="item" placeholder="Enter your item here">
-  <input type="date"name="dueby" placeholder="What date is your item due by?">
-  <input type="text"name="category" placeholder="What category is your item?">
-  <input type="submit" placeholder="submit"> 
+  <input type="date" name="dueBy" placeholder="What date is your item due by?">
+  <input type="text" name="category" placeholder="What category is your item?">
+  
+  <input type="submit" placeholder="submit">
 </form>
 
 
-<ul>
-  {{#each allList}}
-  <li><b>Item:</b> {{this.item}}</li>
-  <li><b>Due by:</b> {{this.dueby}}</li>
-  <li><b>Category:</b> {{this.category}}</li>
-  <input type="submit" name="del" placeholder="delete" method="">{{this.delete}}</input>
-  
-  
-</ul>
-{{!-- <button method="delete"> DELETE </button>
-<button> EDIT </button>
-<br>  --}}
- {{/each}}
+<div id="main" >
+  <ul>
+    {{#each allList}}
+    <div id="container" style="background-color:{{col}}">
+        <li><b>Item:</b> {{this.item}}</li>
+        <li><b>Due by:</b> {{this.dueBy}}</li>
+        <li><b>Category:</b> {{this.category}}</li>
+         <form action="/removeItem" method="post">
+        <button name="remove" type="submit" value={{this._id}}> Delete </button>
+        </form>
+        <form action="/markComplete" method="post">
+        <button name="complete" type="submit" value={{this._id}}> Completed </button>
+        </form>
+
+        {{!-- <form action="/removeItem" method="post">
+        <button name="remove" type="submit" value={{this._id}}> Delete </button>
+        </form>
+     --}}
+
+    </div> 
+    {{/each}}
+ </ul>
+ </div> 
