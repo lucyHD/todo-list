@@ -31,6 +31,7 @@ router.post('/', async (req, res)=>{
 })
 
 
+
 router.post('/removeItem', async (req,res)=>{
     let data = await Todo.findByIdAndDelete({_id:req.body.remove})
     //this is getting the value - the value is the value to be sent to the server. What you set as the value in your button gets passed here(req.body.remove) remove is the name you have given the button. 
